@@ -1,6 +1,6 @@
 # Sora's ViewAnimation
 
-Lua script for simple camera animation
+GLua script for simple camera animation 
 
 CLIENT SIDE ONLY !
 
