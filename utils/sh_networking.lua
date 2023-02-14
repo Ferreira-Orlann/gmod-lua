@@ -25,5 +25,5 @@ function snet:Start(name, id)
 end
 
 function snet:AddFunc(idname, id, func)
-    self.Data[name][id] = func
+    self.Data[idname][id] = func
 end
