@@ -21,11 +21,9 @@ function OnGoing_ViewAnimation.New(animation, ply)
 end
 
 function OnGoing_ViewAnimation:End()
-    SideMenu2:SetVisible(true)
 end
 
 function OnGoing_ViewAnimation:Think(pos, angles, fov)
-    SideMenu2:SetVisible(false)
     local keyframe = self.KeyFrames[1]
     local pdata = self.PreviousPlayerViewData
     local frametime = FrameTime()
