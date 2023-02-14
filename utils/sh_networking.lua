@@ -2,7 +2,7 @@ snet = snet or {}
 snet.Data = nt.Data or {}
 snet.Receivers = snet.Receivers or {}
 
-snet.BitCount = 4
+snet.BitCount = 4 -- Max number of function assigned to a name on each side
 
 function snet:Register(name)
     if SERVER then
