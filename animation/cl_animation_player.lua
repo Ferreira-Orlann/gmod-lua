@@ -2,7 +2,7 @@ local PLAYER = FindMetaTable("Player")
 PLAYER.OnGoing_ViewAnimation = nil
 
 function PLAYER:StartViewAnimation(id)
-    local on_anim = OnGoing_ViewAnimation.New(ROLC.viewanimation.registered[id], self)
+    local on_anim = OnGoing_ViewAnimation.New(SLib.viewanimation.registered[id], self)
     self.OnGoing_ViewAnimation = on_anim
     return true
 end

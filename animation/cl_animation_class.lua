@@ -11,7 +11,7 @@ ViewAnimation.__index = ViewAnimation
 
 function ViewAnimation.New()
     local o = setmetatable({}, ViewAnimation)
-    local id = #ROLC.viewanimation.registered + 1
+    local id = #SLib.viewanimation.registered + 1
     ROLC.viewanimation.registered[id] = true
     o.Id = id
     o.KeyFrames = {}

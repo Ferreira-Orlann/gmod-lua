@@ -1,6 +1,6 @@
-ROLC = ROLC or {}
-ROLC.viewanimation = ROLC.animation or {}
-ROLC.viewanimation.registered = {}
+SLib = SLib or {}
+SLib.viewanimation = SLib.animation or {}
+SLib.viewanimation.registered = {}
 
 hook.Add( "HUDShouldDraw", "ROLC_HUDShouldDraw_Anim", function()
     if (LocalPlayer():GetOnGoing_ViewAnimation() ~= nil) then

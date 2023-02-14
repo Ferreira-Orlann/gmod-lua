@@ -1,6 +1,5 @@
 local anim = ViewAnimation.New()
 
-
 local function sleep(self, oanim)
     oanim:Sleep(5)
 end
@@ -14,4 +13,4 @@ anim:AddKeyFrame(KeyFrame.New(Vector(-356.637878, -10715.268555, 10126.531250), 
 anim:End()
 
 LocalPlayer():StartViewAnimation(anim.Id)
--- LocalPlayer().OnGoing_ViewAnimation = nil => Reset
+-- LocalPlayer().GetOnGoing_ViewAnimation() = nil ==> Reset
