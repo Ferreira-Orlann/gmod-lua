@@ -23,5 +23,5 @@ anim:AddKeyFrame(KeyFrame.New(Vector(-356.637878, -10715.268555, 10126.531250), 
 anim:End()
 
 LocalPlayer():StartViewAnimation(anim.Id)
--- LocalPlayer().GetOnGoing_ViewAnimation() = nil => Reset
+-- LocalPlayer().SetOnGoing_ViewAnimation() = nil => Reset
 ```
