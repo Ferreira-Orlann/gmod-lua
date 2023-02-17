@@ -1,5 +1,5 @@
-ROLC.viewanimation = ROLC.animation or {}
-ROLC.viewanimation.registered = {}
+SLib.viewanimation = SLib.animation or {}
+SLib.viewanimation.registered = {}
 
 ViewAnimation = {}
 ViewAnimation.__index = ViewAnimation
