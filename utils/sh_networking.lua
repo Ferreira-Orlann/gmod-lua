@@ -1,8 +1,8 @@
 snet = snet or {}
-snet.Data = nt.Data or {}
+snet.Data = snet.Data or {}
 snet.Receivers = snet.Receivers or {}
 
-snet.BitCount = 4 -- Max number of function assigned to a name on each side
+snet.BitCount = 4 -- 0000, 0001, 0010, ...
 
 function snet:Register(name)
     if SERVER then
@@ -11,10 +11,12 @@ function snet:Register(name)
     self.Data[name] = {}
     net.Receive(name, function(len, ply)
         local id = net.ReadUInt(snet.BitCount)
+        local func = self.Data[name][id]
+        if (func == nil) then return end
         if (SERVER) then
-            self.Data[name][id](len - snet.BitCount, ply)
+            func(len - snet.BitCount, ply)
         else
-            self.Data[name][id](len - snet.BitCount)
+            func(len - snet.BitCount)
         end
     end)
 end
@@ -26,4 +28,15 @@ end
 
 function snet:AddFunc(idname, id, func)
     self.Data[idname][id] = func
+end
+
+-- Player (ply) need to be nil when called on cliend side
+function snet:Call(idname, id, func, ply)
+    self:Start(idname, id)
+    func()
+    if ply then
+        net.Send(ply)
+    else
+        net.SendToServer()
+    end
 end
