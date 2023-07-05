@@ -17,7 +17,6 @@ ix.persistant_corpse = ix.persistant_corpse or {}
 ix.persistant_corpse.callbacks = ix.persistant_corpse.callbacks or {}
 local callbacks = ix.persistant_corpse.callbacks
 
-
 local voidFunc = function() end
 -- callback can be nil on client side
 function ix.persistant_corpse:RegisterOption(name, servercallback, clientcallback)
@@ -52,7 +51,9 @@ if (SERVER) then
 	end
 
 	function playerMeta:CreateDeathRagdoll()
+		hook.Run("PreDeathRagdollCreated", self)
 		self.deathRagdoll = self:CreateServerRagdoll()
+		hook.Run("PostDeathRagdollCreated", self, self.deathRagdoll)
 		function self.deathRagdoll:OnOptionSelected(client, option, data)
 			for i = 1, #callbacks do
 				data = callbacks[i]
@@ -67,7 +68,7 @@ if (SERVER) then
 		if (timer.Exists(tname)) then
 			timer.Remove(tname)
 		end
-		timer.Create(tname, ix.accessories.config.DeathBodiesDespawnTime, 1, function()
+		timer.Create(tname, ix.config.Get("persistent_body_time", 300), 1, function()
 			self.deathRagdoll:Remove()
 		end)
 		self:SetLocalVar("ragdoll", self.deathRagdoll:EntIndex())
@@ -101,9 +102,11 @@ if (SERVER) then
 	-- end
 
 	hook.Add("ShouldSpawnClientRagdoll", "test", function(client)
-		client:DestroyDeathRagdoll()
-		client:CreateDeathRagdoll()
-		return false
+		if (ix.config.Get("persistent_body", true)) then
+			client:DestroyDeathRagdoll()
+			client:CreateDeathRagdoll()
+			return false
+		end
 	end)
 
 	function PLUGIN:PlayerUse(client, entity)

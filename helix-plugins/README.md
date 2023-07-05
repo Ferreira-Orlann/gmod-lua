@@ -13,7 +13,7 @@ ix.persistant_corpse:RegisterOption(name, servercallback, clientcallback)
 ```
 
 ### Hooks
-```lua
+```
 -- ServerSide
 -- Param one: client: Player
 -- Param two: ragdoll: Entity
@@ -23,6 +23,16 @@ PreDeathRagdollRemove
 -- ServerSide
 -- Param one: client: Player
 PostDeathRagdollRemove
+
+-- ServerSide
+-- Param one: client: Player
+PreDeathRagdollCreated
+
+-- ServerSide
+-- Param one: client: Player
+-- Param two: ragdoll: Entity
+--      class: "prop_ragdoll"
+PostDeathRagdollCreated
 ```
 # Support
 
