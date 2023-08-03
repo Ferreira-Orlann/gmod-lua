@@ -63,5 +63,5 @@ PostDeathRagdollCreated
 ```
 # Support
 
-For support, ferreira.orlann@gmail.com or add me on Discord: "soras."
+For support, sora.suzuki.mail@gmail.com or add me on Discord: "soras."
 
